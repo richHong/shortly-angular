@@ -3,28 +3,35 @@ angular.module('shortly.services', [])
 .factory('Links', function ($http) {
   // Your code here
   var allLink = function(){
-    console.log('inside allLink')
+    // console.log('inside allLink')
     return $http({
       method: 'GET',
       url: '/api/links'
     }).then(function success(res){
-      console.log("inside success");
-      console.log('res',res.data);
+      // console.log("inside success");
+      // console.log('res',res.data);
       return res.data;
     }, function failure(res){
-      console.log("inside failure")
+      // console.log("inside failure")
     });
   }
-  // var newLink = function(link){
-  //   return $http({
-  //     method: 'POST',
-  //     url: 'api/links',
-  //     data: link
-  //   })
-  // }
+  var newLink = function(link){
+    console.log("inside newLink")
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: {url:link}
+    }).then(function success(res){
+      console.log("inside success");
+      // console.log('res',res.data);
+      return res.data;
+    }, function failure(res){
+      console.log("inside failure", link)
+    });
+  }
   return {
-    allLink: allLink
-    // newLink:newLink
+    allLink: allLink,
+    newLink:newLink
   };
 })
 .factory('Auth', function ($http, $location, $window) {

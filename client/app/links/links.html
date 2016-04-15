@@ -1,11 +1,14 @@
 <div id='container' ng-controller='LinksController' ng-init="getLinks()">
   <!-- Your html here -->
-  url: {{data.url}}
+  <h2>Links</h2>
+<!--   {{data.links}} -->
+  <div ng-repeat='link in data.links'>
     <img src='assets/redirect_icon.png'/>
-  <div class='info'>
-    <div class='visits'><span class='count'>{{visits}}</span>Visits</div>
-    <div class='title'>{{title}}</div>
-    <div class='original'>{{url}}</div>
-    <a href='{{base_url}}/{{code}}'>{{base_url}}/{{code}}</a>
+    <div class='info'>
+      <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+      <div class='title'>{{link.title}}</div>
+      <div class='original'>{{link.url}}</div>
+      <a href='{{link.base_url}}/{{link.code}}'>{{link.base_url}}/{{link.code}}</a>
+    </div>
   </div>
 </div>

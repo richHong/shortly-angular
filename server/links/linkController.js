@@ -5,14 +5,17 @@ var Link    = require('./linkModel.js'),
 
 module.exports = {
   findUrl: function (req, res, next, code) {
+    console.log('inside findUrl')
     var findLink = Q.nbind(Link.findOne, Link);
     findLink({code: code})
       .then(function (link) {
         if (link) {
+          // console.log('found link')
           req.navLink = link;
           next();
         } else {
           next(new Error('Link not added yet'));
+          // console.log('error finding link')
         }
       })
       .fail(function (error) {
@@ -33,6 +36,7 @@ module.exports = {
   },
 
   newLink: function (req, res, next) {
+    console.log('req.body',req.body.url)
     var url = req.body.url;
     console.log(req.body);
     if (!util.isValidUrl(url)) {
@@ -72,6 +76,7 @@ module.exports = {
   },
 
   navToLink: function (req, res, next) {
+    console.log('req', req.navLink)
     var link = req.navLink;
     link.visits++;
     link.save(function (err, savedLink) {
