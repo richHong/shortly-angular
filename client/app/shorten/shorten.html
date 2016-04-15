@@ -1,5 +1,14 @@
 <div id='container' ng-controller='ShortenController'>
 <!-- Your code here -->
+  <nav>
+    <ul>
+      <li><a href='#shorten'>Shorten</a></li>
+      <li><a href='#links'>Links</a></li>
+      <li><a href='#signout' ng-click='signOut()'>Sign Out</a></li>
+    </ul>
+  </nav>
+
+  <h2>Shorten URL</h2>
   <form>
       <input class='text' type='text' name='url' ng-model='url'>
       <input type='submit' value='Shorten' ng-click='addLink()'>

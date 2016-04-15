@@ -1,7 +1,14 @@
-<div id='container' ng-controller='LinksController' ng-init="getLinks()">
+<div id='container' ng-controller='LinksController'>
   <!-- Your html here -->
+  <nav>
+    <ul>
+      <li><a href='#shorten'>Shorten</a></li>
+      <li><a href='#links'>Links</a></li>
+      <li><a href='#signout'ng-click='signOut()'>Sign Out</a></li>
+    </ul>
+  </nav>
+
   <h2>Links</h2>
-<!--   {{data.links}} -->
   <div ng-repeat='link in data.links'>
     <img src='assets/redirect_icon.png'/>
     <div class='info'>
