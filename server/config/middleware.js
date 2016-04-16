@@ -1,6 +1,6 @@
 var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
-    util        = require('../links/linkController.js') 
+    util        = require('../links/linkController.js'), 
     helpers     = require('./helpers.js'); // our custom middleware
 
 
@@ -24,10 +24,9 @@ module.exports = function (app, express) {
   app.use(helpers.errorHandler);
 
   app.get('/*', function(req,res){
-    // console.log('code', req.params[0])
     util.findUrl(req,res, function(){
-      util.navToLink(req,res)
-    },req.params[0])
+      util.navToLink(req,res);
+    },req.params[0]);
   });
 
   // inject our routers into their respective route files

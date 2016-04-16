@@ -1,34 +1,25 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
-  // Your code here
   var allLink = function(){
-    // console.log('inside allLink')
     return $http({
       method: 'GET',
       url: '/api/links'
     }).then(function success(res){
-      // console.log("inside success");
-      // console.log('res',res.data);
       return res.data;
     }, function failure(res){
-      // console.log("inside failure")
     });
-  }
+  };
   var newLink = function(link){
-    console.log("inside newLink")
     return $http({
       method: 'POST',
       url: '/api/links',
       data: {url:link}
     }).then(function success(res){
-      console.log("inside success");
-      // console.log('res',res.data);
       return res.data;
     }, function failure(res){
-      console.log("inside failure", link)
     });
-  }
+  };
   return {
     allLink: allLink,
     newLink:newLink
